@@ -8,6 +8,39 @@ Innovate_Hub is a web-based portal designed to foster collaboration among colleg
 - Application system for collaborators with cover letter uploads.
 - Secure dual login system with JWT-based authentication.
 
+# Steps to Clone and Run the Project
+ # frontend
+- Clone the Repository
+  git clone https://github.com/username/repository-name.git
+- Navigate to the Project Directory
+  cd repository-name
+- Install Dependencies
+  npm install
+- Run the Development Server
+  npm run dev
+ # Backend
+- Navigate to the Project backend Directory
+  cd repository-name
+- Install Dependencies
+  npm install
+- Set Up Environment Variables
+ Create a .env file in the root directory and configure the required variables as specified in .env.
+  Varaibles are:-
+  PORT=_____
+  FRONTEND_URL=_____
+  CLOUDINARY_CLIENT_NAME=_____
+  CLOUDINARY_CLIENT_API=_____
+  CLOUDINARY_CLIENT_SECRET=_____
+  JWT_SECRET_KEY=____
+  JWT_EXPIRE=____
+  COOKIE_EXPIRE=___
+  MONGO_URI=____
+  
+- Run the Development Server
+  npm start
+
+
+
 
 # ScreenShots
 
