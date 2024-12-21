@@ -13,14 +13,15 @@ Innovate_Hub is a web-based portal designed to foster collaboration among colleg
 # -Home Page
 ![Home Page](Images/Home1.png)
 ![Home Page](Images/Home2.png)
-- Project Head Accessible Pages
+
+# - Project Head Accessible Pages
 ![Post your Project](Images/Post_A_project2.png)
-![Posted Project](Images/Posted_project (2).png)
+![Posted Project](Images/Posted_project.png)
 ![Post your Project](Images/Applicants_Application.png)
 
 
 - Project Seekers Accessible Pages
-![Listed Project for Application](Images/Project_details (2).png)
+![Listed Project for Application](Images/Project_details.png)
 ![My_Application](Images/My_application.png)
 ![Available Project](Images/Avalable_projects.png)
 ![Application form](Images/Application_form.png)
