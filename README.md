@@ -10,9 +10,7 @@ Innovate_Hub is a web-based portal designed to foster collaboration among colleg
 
 
 # ScreenShots
-# -Home Page
-![Home Page](Images/Home1.png)
-![Home Page](Images/Home2.png)
+
 
 # - Project Head Accessible Pages
 ![Post your Project](Images/Post_A_project2.png)
