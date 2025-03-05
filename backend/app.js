@@ -15,7 +15,7 @@ const app=express();
 dotenv.config({path:'./config/config.env'});
 
 app.use(cors({
-    origin: 'https://innovate-hub.onrender.com',
+    origin: 'https://innovate-hub-frontend.onrender.com',
     methods:['GET','POST','DELETE','PUT'],
     credentials: true,
 }));
