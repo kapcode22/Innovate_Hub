@@ -52,7 +52,7 @@ const MyProject = () => {
     try {
       const updatedProject = myProjects.find((project) => project._id === projectId);
       const response = await axios.put(
-        `http://localhost:4000/api/v1/project/update/${projectId}`,
+        `https://innovate-hub-backend.onrender.com/api/v1/project/update/${projectId}`,
         updatedProject,
         { withCredentials: true }
       );
@@ -66,7 +66,7 @@ const MyProject = () => {
   const handleDeleteProject = async (projectId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/v1/project/delete/${projectId}`,
+        `https://innovate-hub-backend.onrender.com/api/v1/project/delete/${projectId}`,
         { withCredentials: true }
       );
       toast.success(response.data.message);
