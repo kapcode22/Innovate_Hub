@@ -21,7 +21,6 @@ const allowedOrigins = [
   "https://innovate-hub-frontend.onrender.com"
 ];
 
-app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -29,8 +28,11 @@ app.use(cors({
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true
+  credentials: true, // Allow cookies and authorization headers
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
 }));
+
  // Preflight requests
 
 app.use(cookieParser());
