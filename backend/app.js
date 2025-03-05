@@ -14,12 +14,24 @@ const app=express();
 //connection of env file 
 dotenv.config({path:'./config/config.env'});
 
+import cors from "cors";
+
+const allowedOrigins = [
+  "https://innovate-hub.onrender.com",
+  "https://innovate-hub-frontend.onrender.com"
+];
+
 app.use(cors({
-    origin: 'https://innovate-hub-frontend.onrender.com',
-    methods:['GET','POST','DELETE','PUT'],
-    credentials: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
 }));
-app.options('*', cors()); // Preflight requests
+ // Preflight requests
 
 app.use(cookieParser());
 //aprse only json data neglect other
