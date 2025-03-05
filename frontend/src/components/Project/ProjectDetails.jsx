@@ -12,7 +12,7 @@ const ProjectDetails = () => {
   const { isAuthorized, user } = useContext(Context);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/v1/project/${id}`, {
+    axios.get(`https://innovate-hub-backend.onrender.com/api/v1/project/${id}`, {
       withCredentials: true,
     }).then(res => {
       setProject(res.data.project);
