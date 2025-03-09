@@ -7,39 +7,32 @@ import { sendToken } from "../utils/jwtToken.js";
 // const crypto = require("crypto");
 
 // Register user
-export const register = catchAsyncError(async (req, res, next) => {
-  let { name, email, phone, role, password } = req.body;
-  console.log(req.body); // Log the request body for debugging
+export const register = async (req, res, next) => {
+  try {
+    let { name, email, phone, role, password } = req.body;
+    console.log("Incoming Registration Request:", req.body); // Check if request is received
 
-  // Normalize the role input to match the enum values
-  role = role.trim();
+    if (!name || !email || !phone || !role || !password) {
+      console.log("Error: Missing Fields");
+      return res.status(400).json({ success: false, message: "Please fill all fields" });
+    }
 
-  if (!name || !email || !phone || !role || !password) {
-    return next(new ErrorHandler("Please fill the full registration form", 400));
+    const isEmail = await User.findOne({ email });
+    if (isEmail) {
+      console.log("Error: Email already exists");
+      return res.status(400).json({ success: false, message: "Email already exists" });
+    }
+
+    const user = await User.create({ name, email, phone, role, password });
+    console.log("User Registered Successfully:", user);
+
+    res.status(201).json({ success: true, message: "User registered successfully", user });
+
+  } catch (error) {
+    console.error("Registration Error:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
-
-  // Check if the email already exists
-  const isEmail = await User.findOne({ email });
-  if (isEmail) {
-    return next(new ErrorHandler("Email already exists", 400));
-  }
-
-  // Create a new user
-  const user = await User.create({
-    name,
-    email,
-    phone,
-    role,
-    password,
-  });
-
-  // Send a success response
-  res.status(201).json({
-    success: true,
-    message: "User registered successfully",
-    user,
-  });
-});
+};
 
 
 // Login user
@@ -60,21 +53,7 @@ export const login = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Invalid password.", 400));
   }
 
-//   if (!user.verified) {
-//     let token = await Token.findOne({ userId: user._id });
 
-//     if (!token) {
-//       token = await new Token({
-//         userId: user._id,
-//         token: crypto.randomBytes(32).toString("hex"),
-//       }).save();
-
-//       const url = `${process.env.BASEURL}users/${user._id}/verify/${token.token}`;
-//       await sendEmail(user.email, "Verify Email", url);
-//     }
-
-//     return res.status(201).send({ message: "An email has been sent to your account for verification." });
-//   }
 
   if (user.role !== role) {
     return next(new ErrorHandler("Invalid role.", 404));

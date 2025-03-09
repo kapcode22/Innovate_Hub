@@ -105,16 +105,19 @@ export const deleteProject= catchAsyncError(async(req,res,next)=>{
 
 export const getSingleProject = catchAsyncError(async (req, res, next) => {
     const { id } = req.params;
-    try {
-      const project = await Project.findById(id);
-      if (!project) {
+
+    // Check if the ID is a valid MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return next(new ErrorHandler("Invalid Project ID.", 400));
+    }
+
+    const project = await Project.findById(id);
+    if (!project) {
         return next(new ErrorHandler("Project not found.", 404));
-      }
-      res.status(200).json({
+    }
+
+    res.status(200).json({
         success: true,
         project,
-      });
-    } catch (error) {
-      return next(new ErrorHandler(`Invalid ID / CastError`, 404));
-    }
-  });
+    });
+});

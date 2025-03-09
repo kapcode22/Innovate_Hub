@@ -8,4 +8,5 @@ router.post("/post",isAuthorized,postProject);
 router.get("/getmyprojects",isAuthorized,getmyProjects);
 router.put("/update/:id",isAuthorized,updateProject);
 router.delete("/delete/:id",isAuthorized,deleteProject);
+router.get("/:id",getSingleProject);
 export default router;
