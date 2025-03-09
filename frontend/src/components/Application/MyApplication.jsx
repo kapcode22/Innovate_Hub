@@ -29,8 +29,8 @@ const MyApplications = () => {
       try {
         const endpoint =
           user.role === "Project Head"
-            ? "http://localhost:4000/api/v1/application/projecthead/getall"
-            : "http://localhost:4000/api/v1/application/projectseeker/getall";
+            ? "https://innovate-hub-backend.onrender.com/api/v1/application/projecthead/getall"
+            : "https://innovate-hub-backend.onrender.com/api/v1/application/projectseeker/getall";
 
         const { data } = await axios.get(endpoint, { withCredentials: true });
         setApplications(data.applications);
@@ -45,7 +45,7 @@ const MyApplications = () => {
   const deleteApplication = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/application/delete/${id}`,
+        `https://innovate-hub-backend.onrender.com/api/v1/application/delete/${id}`,
         { withCredentials: true }
       );
       toast.success(data.message);
