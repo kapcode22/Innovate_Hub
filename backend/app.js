@@ -14,10 +14,7 @@ const app=express();
 //connection of env file 
 dotenv.config({path:'./config/config.env'});
 
-import cors from "cors";
-
 const allowedOrigins = [
-  "https://innovate-hub.onrender.com",
   "https://innovate-hub-frontend.onrender.com"
 ];
 
