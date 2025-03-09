@@ -22,6 +22,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      console.log("Registering with:", { name, phone, email, role, password }); // Debug log
       const { data } = await axios.post(
         "http://localhost:4000/api/v1/user/register",
         { name, phone, email, role, password },
@@ -32,7 +33,9 @@ const Register = () => {
           withCredentials: true,
         }
       );
+      console.log("Registration Success:", data);
       toast.success(data.message);
+     
       setName("");
       setEmail("");
       setPassword("");
@@ -40,11 +43,11 @@ const Register = () => {
       setRole("");
       setIsAuthorized(true);
     } catch (error) {
-      console.error(error); // Log the error for debugging
-      const errorMessage = error.response?.data?.message || "An error occurred. Please try again.";
-      toast.error(errorMessage);
+      console.error("Registration Error:", error.response?.data);
+      toast.error(error.response?.data?.message || "An error occurred.");
     }
   };
+  
 
   if(isAuthorized){
     return <Navigate to={'/'}/>
