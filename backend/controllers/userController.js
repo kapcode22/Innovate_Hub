@@ -33,21 +33,14 @@ export const register = catchAsyncError(async (req, res, next) => {
     password,
   });
 
-  // Generate a verification token and send email
-//   const token = await new Token({
-//     userId: user._id,
-//     token: crypto.randomBytes(32).toString("hex"),
-//   }).save();
-
-//   const url = `${process.env.BASEURL}users/${user._id}/verify/${token.token}`;
-//   await sendEmail(user.email, "Verify Email", url);
-
-//   res.status(201).json({
-//     success: true,
-//     message: "An email has been sent to verify your account.",
-//     user,
-//   });
+  // Send a success response
+  res.status(201).json({
+    success: true,
+    message: "User registered successfully",
+    user,
+  });
 });
+
 
 // Login user
 export const login = catchAsyncError(async (req, res, next) => {
