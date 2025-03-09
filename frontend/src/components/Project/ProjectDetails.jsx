@@ -55,7 +55,7 @@ const ProjectDetails = () => {
     if (!isAuthorized) {
       navigate("/login");
     }
-  }, [isAuthorized, navigate]);
+  }, []);
 
   if (error) {
     return <div className="error-message">{error}</div>;
