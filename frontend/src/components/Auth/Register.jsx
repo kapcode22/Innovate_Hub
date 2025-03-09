@@ -24,7 +24,7 @@ const Register = () => {
     try {
       console.log("Registering with:", { name, phone, email, role, password }); // Debug log
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        "https://innovate-hub-backend.onrender.com/api/v1/user/register",
         { name, phone, email, role, password },
         {
           headers: {

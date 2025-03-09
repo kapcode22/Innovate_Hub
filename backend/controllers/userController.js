@@ -34,6 +34,7 @@ export const register = async (req, res, next) => {
   }
 };
 
+
 // Login user
 export const login = catchAsyncError(async (req, res, next) => {
   const { email, password, role } = req.body;
@@ -52,21 +53,7 @@ export const login = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Invalid password.", 400));
   }
 
-//   if (!user.verified) {
-//     let token = await Token.findOne({ userId: user._id });
 
-//     if (!token) {
-//       token = await new Token({
-//         userId: user._id,
-//         token: crypto.randomBytes(32).toString("hex"),
-//       }).save();
-
-//       const url = `${process.env.BASEURL}users/${user._id}/verify/${token.token}`;
-//       await sendEmail(user.email, "Verify Email", url);
-//     }
-
-//     return res.status(201).send({ message: "An email has been sent to your account for verification." });
-//   }
 
   if (user.role !== role) {
     return next(new ErrorHandler("Invalid role.", 404));
